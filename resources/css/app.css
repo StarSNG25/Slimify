@@ -1,9 +1,8 @@
 @import "tailwindcss";
-@import "flowbite/src/themes/default";
+@import '../../vendor/livewire/flux/dist/flux.css';
 
-/*@tailwind base;*/
-/*@tailwind components;*/
-/*@tailwind utilities;*/
+@custom-variant dark (&:where(.dark, .dark *));
 
-@plugin "flowbite/plugin";
-@source "../../node_modules/flowbite";
+@theme {
+	--font-sans: Inter, sans-serif;
+}
