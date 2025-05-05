@@ -12,7 +12,8 @@ return new class extends Migration
 	 */
 	public function up(): void
 	{
-		Schema::create('links', function (Blueprint $table) {
+		Schema::create('links', function (Blueprint $table)
+		{
 			$table->id();
 			$table->foreignId('user_id')->nullable()->constrained()->onDelete('cascade');
 			$table->string('short_code');
@@ -20,8 +21,11 @@ return new class extends Migration
 			$table->unsignedInteger('clicks')->default(0);
 			$table->timestamp('last_clicked_at')->nullable();
 			$table->boolean('is_active')->default(true);
+			$table->boolean('is_not_deleted')->virtualAs('IF(deleted_at IS NULL, TRUE, NULL)');
 			$table->softDeletes();
 			$table->timestamps();
+			
+			$table->unique(['short_code', 'is_not_deleted']);
 		});
 	}
 	
