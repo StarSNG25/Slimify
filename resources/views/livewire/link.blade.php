@@ -6,7 +6,7 @@
 	</flux:field>
 	
 	<flux:field class="mt-5">
-		<flux:label>Short Code</flux:label>
+		<flux:label badge="Optional">Short Code</flux:label>
 		<flux:input wire:model="shortCode" type="text" />
 		<flux:error name="shortCode" />
 	</flux:field>
@@ -26,8 +26,8 @@
 	
 	<flux:field class="mt-5">
 		<flux:label>Delete Code</flux:label>
-		<flux:input wire:model="shortCode" type="text" />
-		<flux:error name="shortCode" />
+		<flux:input wire:model="deleteShortCode" type="text" />
+		<flux:error name="deleteShortCode" />
 	</flux:field>
 	
 	<flux:field class="mt-5">

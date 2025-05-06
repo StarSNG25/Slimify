@@ -14,6 +14,7 @@ class Link extends Component
 	public string $originalUrl;
 	public string $shortCode;
 	public string $shortUrl;
+	public string $deleteShortCode;
 	
 	public function submit()
 	{
@@ -37,21 +38,20 @@ class Link extends Component
 			
 			$this->shortUrl = url('/' . $shortCode);
 			
-			$this->reset('originalUrl', 'shortCode');
+			$this->reset('originalUrl', 'shortCode', 'deleteShortCode');;
 		}
 		catch (QueryException $exception)
 		{
 			if ($exception->getCode() == 23000)
 				$this->addError('shortCode', 'The short code already exists.');
-			return;
 		}
 	}
 	
 	public function delete()
 	{
-		LinkModel::where('short_code', $this->shortCode)->delete();
+		LinkModel::where('short_code', $this->deleteShortCode)->delete();
 		
-		$this->reset('originalUrl', 'shortCode');
+		$this->reset('originalUrl', 'shortCode', 'shortUrl', 'deleteShortCode');
 	}
 	
     public function render()
