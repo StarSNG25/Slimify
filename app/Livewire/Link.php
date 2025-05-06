@@ -23,7 +23,12 @@ class Link extends Component
 				'originalUrl' => 'required|url'
 			]);
 			
-			$shortCode = !empty($this->shortCode) ? $this->shortCode : Str::random(6);
+			if (!empty($this->shortCode))
+				$shortCode = $this->shortCode;
+			else
+				do
+					$shortCode = Str::random(6);
+				while (LinkModel::where('short_code', $shortCode)->exists());
 			
 			$link = LinkModel::create([
 				'short_code' => $shortCode,
