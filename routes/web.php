@@ -7,6 +7,16 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', Link::class);
 
+Route::view('dashboard', 'dashboard')
+	->middleware(['auth', 'verified'])
+	->name('dashboard');
+
+Route::view('profile', 'profile')
+	->middleware(['auth'])
+	->name('profile');
+
+require __DIR__.'/auth.php';
+
 Route::get('/{shortCode}', function ($shortCode)
 {
 	$link = LinkModel
@@ -21,13 +31,3 @@ Route::get('/{shortCode}', function ($shortCode)
 	
 	return redirect($link->original_url);
 });
-
-Route::view('dashboard', 'dashboard')
-	->middleware(['auth', 'verified'])
-	->name('dashboard');
-
-Route::view('profile', 'profile')
-	->middleware(['auth'])
-	->name('profile');
-
-require __DIR__.'/auth.php';
