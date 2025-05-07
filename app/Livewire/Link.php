@@ -32,6 +32,7 @@ class Link extends Component
 				while (LinkModel::where('short_code', $shortCode)->exists());
 			
 			$link = LinkModel::create([
+				'user_id' => auth()->id(),
 				'short_code' => $shortCode,
 				'original_url' => $this->originalUrl
 			]);
