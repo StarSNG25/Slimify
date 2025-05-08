@@ -9,7 +9,7 @@
 		<meta name="apple-mobile-web-app-title" content="Link Shortener">
 		<link rel="apple-touch-icon" href="{{ asset('favicon.png') }}">
 
-		<title>{{ config('app.name', 'Laravel') }} | Star_SNG</title>
+		<title>{{ config('app.name', 'Laravel') }}</title>
 		
 		<link rel="icon" type="image/png" href="{{ asset('favicon.png') }}">
 		
