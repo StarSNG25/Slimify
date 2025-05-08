@@ -6,12 +6,12 @@
 		<meta name="csrf-token" content="{{ csrf_token() }}">
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-		<meta name="apple-mobile-web-app-title" content="Link Shortener">
-		<link rel="apple-touch-icon" href="{{ asset('favicon.png') }}">
+		<meta name="apple-mobile-web-app-title" content="Slimify">
+		<link rel="apple-touch-icon" href="{{ asset('images/apple-touch-icon.png') }}">
 
 		<title>{{ config('app.name', 'Laravel') }}</title>
 		
-		<link rel="icon" type="image/png" href="{{ asset('favicon.png') }}">
+		<link rel="icon" type="image/svg+xml" href="{{ asset('favicon.svg') }}">
 
 		<!-- Fonts -->
 		<link rel="preconnect" href="https://fonts.bunny.net">
