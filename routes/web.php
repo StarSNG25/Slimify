@@ -5,7 +5,8 @@ use App\Models\Link as LinkModel;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', Link::class);
+Route::get('/', Link::class)
+	->name('home');
 
 Route::view('dashboard', 'dashboard')
 	->middleware(['auth', 'verified'])
