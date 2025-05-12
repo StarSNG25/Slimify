@@ -21,7 +21,8 @@ class Link extends Component
 		try
 		{
 			$this->validate([
-				'originalUrl' => 'required|url'
+				'originalUrl' => 'required|url',
+				'shortCode' => 'nullable|string|regex:/^[A-Za-z0-9_-]*$/'
 			]);
 			
 			if (!empty($this->shortCode))
