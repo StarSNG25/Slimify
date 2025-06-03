@@ -16,7 +16,7 @@ class Link extends Component
 	public string $shortUrl;
 	public string $deleteShortCode;
 	
-	public function submit()
+	public function submit(): void
 	{
 		try
 		{
@@ -49,7 +49,7 @@ class Link extends Component
 		}
 	}
 	
-	public function delete()
+	public function delete(): void
 	{
 		LinkModel::where('short_code', $this->deleteShortCode)->delete();
 		
