@@ -1,11 +1,11 @@
 <?php
 
+use App\Http\Controllers\LinkController;
 use App\Livewire\Link;
-use App\Models\Link as LinkModel;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', Link::class)
+	->middleware(['guest'])
 	->name('home');
 
 Route::view('dashboard', 'dashboard')
@@ -18,17 +18,4 @@ Route::view('profile', 'profile')
 
 require __DIR__.'/auth.php';
 
-Route::get('/{shortCode}', function ($shortCode)
-{
-	$link = LinkModel
-		::where('short_code', $shortCode)
-		->where('is_active', true)
-		->firstOrFail();
-	
-	LinkModel::where('id', $link->id)->update([
-		'clicks' => DB::raw('clicks + 1'),
-		'last_clicked_at' => now(),
-	]);
-	
-	return redirect($link->original_url);
-});
+Route::get('/{shortCode}', [LinkController::class, 'redirect']);
